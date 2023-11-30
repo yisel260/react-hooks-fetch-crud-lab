@@ -11,10 +11,11 @@ function QuestionForm({handleAddQuestion}) {
   });
 
   function handleChange(event) {
+    console.log("handleChange is being triggered")
     setFormData({
       ...formData,
-      [event.target.name]: event.target.value,
-    });
+      [event.target.name]: event.target.value
+    })
   }
 
   function handleSubmit(event) {

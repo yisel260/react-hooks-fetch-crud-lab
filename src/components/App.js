@@ -15,6 +15,17 @@ function App() {
        })
   }, []);
 
+  function handleUpdatedQuestion(updatedQuestion) {
+    const updatedQuestionList = questionList.map((question) => {
+      if (question.id === updatedQuestion.id) {
+        return updatedQuestion;
+      } else {
+        return question;
+      }
+    });
+    setQuestionList(updatedQuestionList);
+  }
+
 
   
   function onDeleteQuestion(deletedQuestion) {
@@ -32,7 +43,7 @@ function App() {
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
-      {page === "Form" ? <QuestionForm handleAddQuestion={handleAddQuestion}/> : <QuestionList questionList={questionList} onDeleteQuestion= {onDeleteQuestion} />}
+      {page === "Form" ? <QuestionForm handleAddQuestion={handleAddQuestion}/> : <QuestionList questionList={questionList} onDeleteQuestion= {onDeleteQuestion} handleUpdatedQuestion={handleUpdatedQuestion}/>}
     </main>
   );
 }
