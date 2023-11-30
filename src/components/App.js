@@ -15,6 +15,13 @@ function App() {
        })
   }, []);
 
+
+  
+  function onDeleteQuestion(deletedQuestion) {
+    const updatedQuestionList = questionList.filter((question) => question.id !== deletedQuestion.id);
+    setQuestionList(updatedQuestionList);
+  }
+
   //console.log(questionList)
 
   function handleAddQuestion(newQuestion){
@@ -25,7 +32,7 @@ function App() {
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
-      {page === "Form" ? <QuestionForm handleAddQuestion={handleAddQuestion}/> : <QuestionList questionList={questionList} />}
+      {page === "Form" ? <QuestionForm handleAddQuestion={handleAddQuestion}/> : <QuestionList questionList={questionList} onDeleteQuestion= {onDeleteQuestion} />}
     </main>
   );
 }
